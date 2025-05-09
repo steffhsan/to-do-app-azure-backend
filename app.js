@@ -1,6 +1,13 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const pool = require("./src/config/db.js");
+
+pool
+  .query("SELECT 1")
+  .then(() => console.log("✅ Datenbankverbindung erfolgreich"))
+  .catch((err) => console.error("❌ Fehler bei Datenbankverbindung:", err));
 
 const app = express();
 
