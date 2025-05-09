@@ -31,7 +31,7 @@ router.post("/todos", async (req, res) => {
   try {
     const { title, text, date } = req.body;
     const result = await pool.query(
-      "INSERT INTO todos (title, text, date) VALUES ($1, $2, $3) RETURNING *",
+      "INSERT INTO todos (title, text, date, done, archived) VALUES ($1, $2, $3, false, false) RETURNING *",
       [title, text, date]
     );
     res.status(201).json(result.rows[0]);
