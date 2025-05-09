@@ -83,6 +83,12 @@ router.delete("/todos", async (req, res) => {
 });
 
 // 👉 ALLES unter /api
+
+// Zum Testen, ob Server erreichbar ist
+app.get("/api/ping", (req, res) => {
+  res.json({ message: "pong" });
+});
+
 app.use("/api", router);
 
 // Start

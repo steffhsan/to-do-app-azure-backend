@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS todos (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  text TEXT,
+  date TEXT,
+  done BOOLEAN DEFAULT FALSE,
+  archived BOOLEAN DEFAULT FALSE
+);
