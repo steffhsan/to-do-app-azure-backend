@@ -36,8 +36,8 @@ router.post("/todos", async (req, res) => {
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
-    console.error("Fehler bei POST /todos:", err);
-    res.status(500).json({ error: "Fehler beim Erstellen des Todos" });
+    console.error("Fehler bei POST /todos:", err.message); // oder err.stack
+    res.status(500).json({ error: err.message });
   }
 });
 
