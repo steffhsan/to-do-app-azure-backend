@@ -17,13 +17,13 @@ app.use(cors());
 // 💡 ALLES unter /api erreichbar machen
 const router = express.Router();
 
-router.get("/todos", async (req, res) => {
+app.get("/api/todos", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM todos ORDER BY id DESC");
-    res.json(result.rows);
+    const todos = await pool.query("SELECT * FROM todos LIMIT 10");
+    res.json(todos.rows);
   } catch (err) {
-    console.error("Fehler bei GET /todos:", err);
-    res.status(500).json({ error: "Server error" });
+    console.error("Fehler bei GET /api/todos:", err.message);
+    res.status(500).json({ error: "Fehler beim Abrufen der Todos" });
   }
 });
 
